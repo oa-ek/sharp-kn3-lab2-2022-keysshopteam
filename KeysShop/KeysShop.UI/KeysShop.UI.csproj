@@ -21,4 +21,10 @@
     <ProjectReference Include="..\KeysShop.Repository\KeysShop.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\img\keys\simple.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -44,6 +44,11 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+/*builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+{
+    goo
+});*/
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -3,18 +3,20 @@ using KeysShop.Repository;
 using KeysShop.Repository.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
-
+using System.IO;
 namespace KeysShop.UI.Controllers
 {
     public class KeyController : Controller
     {
         private readonly KeysRepository keysRepository;
         private readonly BrandRepository brandsRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public KeyController(KeysRepository keysRepository, BrandRepository brandRepository)
+        public KeyController(KeysRepository keysRepository, BrandRepository brandRepository, IWebHostEnvironment webHostEnvironment)
         {
             this.keysRepository = keysRepository;
             brandsRepository = brandRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -33,11 +35,20 @@ namespace KeysShop.UI.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Create(KeyCreateDto keyCreateDto, string brands)
+        public async Task<IActionResult> Create(KeyCreateDto keyCreateDto, string brands, IFormFile picture)
         {
             ViewBag.Brands = brandsRepository.GetBrands();
             if (ModelState.IsValid)
             {
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "keys", picture.FileName);
+
+                using (FileStream stream = new FileStream(picturePath, FileMode.Create))
+                    picture.CopyTo(stream);
+
+                keyCreateDto.ImgPath = Path.Combine("img", "keys", picture.FileName);
+
+                
+
                 var brand = brandsRepository.GetBrandByName(brands);
                 if (brand == null)
                 {
@@ -63,6 +74,15 @@ namespace KeysShop.UI.Controllers
             }
             return View(keyCreateDto);
         }
+
+        [HttpGet]
+        public FileContentResult GetImgPath(int id)
+        {
+            var path = keysRepository.GetKey(id).ImgPath;
+            var byteArray = System.IO.File.ReadAllBytes(path);
+            return new FileContentResult(byteArray, "image/jpeg");
+        }
+
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -72,7 +92,7 @@ namespace KeysShop.UI.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Edit(KeyCreateDto model, string brands)
+        public async Task<IActionResult> Edit(KeyCreateDto model, string brands, IFormFile picture)
         {
             if (ModelState.IsValid)
             {
