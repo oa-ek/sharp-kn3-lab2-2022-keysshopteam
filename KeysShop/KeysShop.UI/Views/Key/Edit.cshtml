@@ -120,21 +120,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="mb-3">
-                                    <label class="form-label" </label>
-                                   </div>
-                                <label class="col-sm-3 col-form-label"for="Brand">Brand</label>
-                                <div class="col-sm-9">
-                                    <select class="form-select form-control form-control-lg select2-hidden-accessible" id="brands" name="brands" data-select2-id="select2-data-brands" tabindex="-1" aria-hidden="true">
-                                        <option value="Mercedes">Mercedes</option>
-                                        <option value="BMW" selected="" data-select2-id="select2-data-2-xbn7">BMW</option>
-                                        <option value="VW">VW</option>
-                                        <option value="Toyota">Toyota</option>
-                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-1-lpe3" style="width: 503.656px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-brands-container" aria-controls="select2-brands-container"><span class="select2-selection__rendered" id="select2-brands-container" role="textbox" aria-readonly="true" title="BMW">BMW</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="mb-3">
+                                        <label class="form-label" </label>
+                                    </div>
+                                    <label class="col-sm-3 col-form-label" asp-for="Brand"></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" size="3" id="brands" name="brands">
+                                            @foreach (var b in brands)
+                                            {
+                                                var selected = @Model.Brand == b.Name ? true : false;
+                                                <!option value="@b.Name" @(selected ? "selected" : "")>@b.Name</!option>
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">

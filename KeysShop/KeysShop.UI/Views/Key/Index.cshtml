@@ -19,7 +19,8 @@
                 <div class="col-sm-3">
                     <div class="card card-block">
 
-                        <img class="card-img-top img-thumbnail" style="height: 180px; width: 100%; display: block; src="/item/getimage/@item.Id" alt="@item.Name">
+                        @*<img class="card-img-top img-thumbnail" style="height: 180px; width: 100%; display: block; src="/img/keys/@item.ImgPath" alt="@item.Name">*@
+                        <img class="card-img-top img-thumbnail" style="height: 180px; width: 100%; display: block;" src="\@item.ImgPath" alt="@item.Name">
                         <div class="card-block">
                                  <h5 class="card-title">@item.Name</h5>
                                  <p class="card-text">Бренд: @item.Brand.Name</p>
