@@ -7,11 +7,10 @@ namespace KeysShop.UI.Controllers
     public class OrderController : Controller
     {
         private readonly OrdersRepository ordersRepository;
-        private readonly SessionManager sessionManager;
-        public OrderController(OrdersRepository ordersRepository, SessionManager sessionManager)
+
+        public OrderController(OrdersRepository ordersRepository)
         {
             this.ordersRepository = ordersRepository;
-            this.sessionManager = sessionManager;
         }
 
         public IActionResult Checkout()
