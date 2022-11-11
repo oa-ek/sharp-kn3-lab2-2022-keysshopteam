@@ -34,6 +34,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<UsersRepository>();
 builder.Services.AddTransient<KeysRepository>();
 builder.Services.AddTransient<BrandRepository>();
+builder.Services.AddTransient<OrdersRepository>();
+builder.Services.AddTransient<SessionManager>();
 
 builder.Services.AddDistributedMemoryCache();
 

@@ -42,56 +42,6 @@ namespace KeysShop.Core.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("KeysShop.Core.Bucket", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Buckets");
-                });
-
-            modelBuilder.Entity("KeysShop.Core.BucketItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("BucketId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("KeyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BucketId");
-
-                    b.HasIndex("KeyId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("BucketItem");
-                });
-
             modelBuilder.Entity("KeysShop.Core.Feedback", b =>
                 {
                     b.Property<int>("Id")
@@ -164,6 +114,66 @@ namespace KeysShop.Core.Migrations
                     b.HasIndex("BrandId");
 
                     b.ToTable("Keys");
+                });
+
+            modelBuilder.Entity("KeysShop.Core.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Delivery")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("KeysShop.Core.OrderDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("KeyId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("KeyId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("KeysShop.Core.User", b =>
@@ -239,65 +249,65 @@ namespace KeysShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "64a183d9-c9ae-440c-b726-0d93a8385731",
+                            Id = "2242398a-c62a-4fb6-a66a-a64b86569876",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3fcd9034-6915-490a-9091-d6282125b74c",
+                            ConcurrencyStamp = "44ee5536-cbb6-4615-812d-a5991f31c18c",
                             Email = "manager@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MANAGER@KEYSSHOP.COM",
                             NormalizedUserName = "MANAGER@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJWOTA+y8euJi3y9SYNDw4WopC6TKd3fgEuinsB9FwVgE2xNwk4aJ2Yd7uHrkCBtxA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJtQRy4cMQVfDsPMyxCNZ5bfUmCswurJgXsaCA0IzYPGbYTE2i5PudaTOFwbwWt6ig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8e1ec647-3716-4426-ba6f-859ca402f6de",
+                            SecurityStamp = "f6db27e5-b4eb-4217-84d9-25a4d539255f",
                             TwoFactorEnabled = false,
                             UserName = "manager@keysshop.com"
                         },
                         new
                         {
-                            Id = "277ec0d9-95d0-4226-8461-4b8001a84f9b",
+                            Id = "1283fa48-21c0-4876-ade1-631783dde9bc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f4fd905-a798-4795-88b4-558e46f6f963",
+                            ConcurrencyStamp = "394dc966-c0ec-48e4-b7b2-23e3300bb4be",
                             Email = "customer@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER@KEYSSHOP.COM",
                             NormalizedUserName = "CUSTOMER@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMZhAP9D1j8Tf9Qye5xqYtHBY+4ArLNVTQJXB6hzDytz9w47faUe5YawEbk5JZvdRQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK3W1gPZ69sCeUfq92/CSzebGfxSCchsjJItQw6cfVcZO9JRUXYVXYqb/kLGP4AJlQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1bdeeb76-c786-4087-8ebf-fa20a11d6e80",
+                            SecurityStamp = "90000b58-0e91-46cf-861c-fe4e0cf74e22",
                             TwoFactorEnabled = false,
                             UserName = "customer@keysshop.com"
                         },
                         new
                         {
-                            Id = "be65a422-9838-4602-ab5c-2b6a0d482385",
+                            Id = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5ed705cb-aab9-4587-af03-f2c4d25537bb",
+                            ConcurrencyStamp = "47cc12d5-f77b-447a-977d-764803f9650b",
                             Email = "admin@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@KEYSSHOP.COM",
                             NormalizedUserName = "ADMIN@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELYk+NNt10UtyiXqIwvPWhGbNbXoIeVRGGiVbg1GygqEeSWrOtOmyp6kD+IMT8zKPQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAOAuwjGudATRQNMUWPnBjm+8ye9Z9flJeah1bAm2+qL8IYOOJQidZa63VKAXVAVUQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "423cc505-9fa4-4d4b-9a4e-b05a97e060fe",
+                            SecurityStamp = "81c93193-2a61-45a7-a4f2-94196c66d54a",
                             TwoFactorEnabled = false,
                             UserName = "admin@keysshop.com"
                         },
                         new
                         {
-                            Id = "72dcbfc5-828a-4c20-b228-1597ad9e9d00",
+                            Id = "5b05eda6-eab9-436c-afb7-af78fbd14b9e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7c7bfaf-6030-4928-9b0a-734a0f93b108",
+                            ConcurrencyStamp = "d15a9ed3-953b-4b83-893a-3e14e9a3b8ed",
                             Email = "consultant@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "CONSULTANT@KEYSSHOP.COM",
                             NormalizedUserName = "CONSULTANT@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENrBihSt801ii0OLl+m6SVy+pcjOieK/lLZG9VVzR9zRIjxWBp6txBftcJQ+GBMMAw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGFH50TWDec1LqQWqipA+Nf6HD83jCNVps2I5CvLvK+GZDFY3GLdWXM5M9Rscrc/6Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d6e1cab-85f7-4336-a08e-f5b2e5a6e29d",
+                            SecurityStamp = "b411ac41-3c90-4fc3-85c3-3436d9514cf2",
                             TwoFactorEnabled = false,
                             UserName = "consultant@keysshop.com"
                         });
@@ -332,29 +342,29 @@ namespace KeysShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d191d0bf-e97a-4553-b9da-02e05cb5588d",
-                            ConcurrencyStamp = "89c48a2a-f1c3-4716-9f00-0a176059fdd8",
+                            Id = "5c3222ad-8240-4940-acb7-b2a74433e15b",
+                            ConcurrencyStamp = "0523fe3e-111b-4405-b116-e186e09fd5e5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "30402003-0f5b-49a0-b7ac-13bb66400ef9",
-                            ConcurrencyStamp = "c94200db-6aae-4db0-81a8-a5544c38f82a",
+                            Id = "8dc6830c-bb38-44d0-ab4a-3965417bfd7b",
+                            ConcurrencyStamp = "e091d7b8-cf4e-48c7-a5a7-eb850dff88b5",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "c9934176-4d04-4120-a066-c24eed230908",
-                            ConcurrencyStamp = "36eaab49-7598-4960-b6e8-30b222c584bc",
+                            Id = "d30bb507-e6c9-41bd-bdfe-2a4490721dd2",
+                            ConcurrencyStamp = "9e6cefc9-f083-40cf-ae78-96fa663c4946",
                             Name = "Consultant",
                             NormalizedName = "CONSULTANT"
                         },
                         new
                         {
-                            Id = "e78efcfa-b117-4e6d-8b2b-9ec09dc24788",
-                            ConcurrencyStamp = "f57ce71f-aa06-4e70-8543-efbca8fcb221",
+                            Id = "1338f983-31ab-4099-b7d8-87c416740af8",
+                            ConcurrencyStamp = "d3d74760-bb15-446b-989d-d29433a84684",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -451,48 +461,48 @@ namespace KeysShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "be65a422-9838-4602-ab5c-2b6a0d482385",
-                            RoleId = "d191d0bf-e97a-4553-b9da-02e05cb5588d"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "5c3222ad-8240-4940-acb7-b2a74433e15b"
                         },
                         new
                         {
-                            UserId = "be65a422-9838-4602-ab5c-2b6a0d482385",
-                            RoleId = "30402003-0f5b-49a0-b7ac-13bb66400ef9"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "8dc6830c-bb38-44d0-ab4a-3965417bfd7b"
                         },
                         new
                         {
-                            UserId = "be65a422-9838-4602-ab5c-2b6a0d482385",
-                            RoleId = "e78efcfa-b117-4e6d-8b2b-9ec09dc24788"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "be65a422-9838-4602-ab5c-2b6a0d482385",
-                            RoleId = "c9934176-4d04-4120-a066-c24eed230908"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "d30bb507-e6c9-41bd-bdfe-2a4490721dd2"
                         },
                         new
                         {
-                            UserId = "64a183d9-c9ae-440c-b726-0d93a8385731",
-                            RoleId = "30402003-0f5b-49a0-b7ac-13bb66400ef9"
+                            UserId = "2242398a-c62a-4fb6-a66a-a64b86569876",
+                            RoleId = "8dc6830c-bb38-44d0-ab4a-3965417bfd7b"
                         },
                         new
                         {
-                            UserId = "64a183d9-c9ae-440c-b726-0d93a8385731",
-                            RoleId = "e78efcfa-b117-4e6d-8b2b-9ec09dc24788"
+                            UserId = "2242398a-c62a-4fb6-a66a-a64b86569876",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "277ec0d9-95d0-4226-8461-4b8001a84f9b",
-                            RoleId = "e78efcfa-b117-4e6d-8b2b-9ec09dc24788"
+                            UserId = "1283fa48-21c0-4876-ade1-631783dde9bc",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "72dcbfc5-828a-4c20-b228-1597ad9e9d00",
-                            RoleId = "e78efcfa-b117-4e6d-8b2b-9ec09dc24788"
+                            UserId = "5b05eda6-eab9-436c-afb7-af78fbd14b9e",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "72dcbfc5-828a-4c20-b228-1597ad9e9d00",
-                            RoleId = "c9934176-4d04-4120-a066-c24eed230908"
+                            UserId = "5b05eda6-eab9-436c-afb7-af78fbd14b9e",
+                            RoleId = "d30bb507-e6c9-41bd-bdfe-2a4490721dd2"
                         });
                 });
 
@@ -517,25 +527,6 @@ namespace KeysShop.Core.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("KeysShop.Core.BucketItem", b =>
-                {
-                    b.HasOne("KeysShop.Core.Bucket", null)
-                        .WithMany("BucketItems")
-                        .HasForeignKey("BucketId");
-
-                    b.HasOne("KeysShop.Core.Key", "Key")
-                        .WithMany()
-                        .HasForeignKey("KeyId");
-
-                    b.HasOne("KeysShop.Core.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Key");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("KeysShop.Core.Feedback", b =>
                 {
                     b.HasOne("KeysShop.Core.Key", null)
@@ -556,6 +547,21 @@ namespace KeysShop.Core.Migrations
                         .HasForeignKey("BrandId");
 
                     b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("KeysShop.Core.OrderDetail", b =>
+                {
+                    b.HasOne("KeysShop.Core.Key", "Key")
+                        .WithMany()
+                        .HasForeignKey("KeyId");
+
+                    b.HasOne("KeysShop.Core.Order", "Order")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId");
+
+                    b.Navigation("Key");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -614,14 +620,14 @@ namespace KeysShop.Core.Migrations
                     b.Navigation("Keys");
                 });
 
-            modelBuilder.Entity("KeysShop.Core.Bucket", b =>
-                {
-                    b.Navigation("BucketItems");
-                });
-
             modelBuilder.Entity("KeysShop.Core.Key", b =>
                 {
                     b.Navigation("feedbacks");
+                });
+
+            modelBuilder.Entity("KeysShop.Core.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 #pragma warning restore 612, 618
         }

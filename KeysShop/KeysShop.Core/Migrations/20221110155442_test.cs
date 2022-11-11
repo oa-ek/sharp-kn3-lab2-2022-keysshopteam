@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KeysShop.Core.Migrations
 {
-    public partial class init : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,17 +65,22 @@ namespace KeysShop.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Buckets",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsCompleted = table.Column<bool>(type: "bit", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Delivery = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Buckets", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,37 +217,6 @@ namespace KeysShop.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BucketItem",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    KeyId = table.Column<int>(type: "int", nullable: true),
-                    Count = table.Column<int>(type: "int", nullable: false),
-                    BucketId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BucketItem", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BucketItem_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_BucketItem_Buckets_BucketId",
-                        column: x => x.BucketId,
-                        principalTable: "Buckets",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_BucketItem_Keys_KeyId",
-                        column: x => x.KeyId,
-                        principalTable: "Keys",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Feedbacks",
                 columns: table => new
                 {
@@ -268,15 +242,40 @@ namespace KeysShop.Core.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "OrderDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", nullable: true),
+                    KeyId = table.Column<int>(type: "int", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Keys_KeyId",
+                        column: x => x.KeyId,
+                        principalTable: "Keys",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "30402003-0f5b-49a0-b7ac-13bb66400ef9", "c94200db-6aae-4db0-81a8-a5544c38f82a", "Manager", "MANAGER" },
-                    { "c9934176-4d04-4120-a066-c24eed230908", "36eaab49-7598-4960-b6e8-30b222c584bc", "Consultant", "CONSULTANT" },
-                    { "d191d0bf-e97a-4553-b9da-02e05cb5588d", "89c48a2a-f1c3-4716-9f00-0a176059fdd8", "Admin", "ADMIN" },
-                    { "e78efcfa-b117-4e6d-8b2b-9ec09dc24788", "f57ce71f-aa06-4e70-8543-efbca8fcb221", "Customer", "CUSTOMER" }
+                    { "1338f983-31ab-4099-b7d8-87c416740af8", "d3d74760-bb15-446b-989d-d29433a84684", "Customer", "CUSTOMER" },
+                    { "5c3222ad-8240-4940-acb7-b2a74433e15b", "0523fe3e-111b-4405-b116-e186e09fd5e5", "Admin", "ADMIN" },
+                    { "8dc6830c-bb38-44d0-ab4a-3965417bfd7b", "e091d7b8-cf4e-48c7-a5a7-eb850dff88b5", "Manager", "MANAGER" },
+                    { "d30bb507-e6c9-41bd-bdfe-2a4490721dd2", "9e6cefc9-f083-40cf-ae78-96fa663c4946", "Consultant", "CONSULTANT" }
                 });
 
             migrationBuilder.InsertData(
@@ -284,10 +283,10 @@ namespace KeysShop.Core.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "277ec0d9-95d0-4226-8461-4b8001a84f9b", 0, "6f4fd905-a798-4795-88b4-558e46f6f963", "customer@keysshop.com", true, null, null, false, null, "CUSTOMER@KEYSSHOP.COM", "CUSTOMER@KEYSSHOP.COM", "AQAAAAEAACcQAAAAEMZhAP9D1j8Tf9Qye5xqYtHBY+4ArLNVTQJXB6hzDytz9w47faUe5YawEbk5JZvdRQ==", null, false, "1bdeeb76-c786-4087-8ebf-fa20a11d6e80", false, "customer@keysshop.com" },
-                    { "64a183d9-c9ae-440c-b726-0d93a8385731", 0, "3fcd9034-6915-490a-9091-d6282125b74c", "manager@keysshop.com", true, null, null, false, null, "MANAGER@KEYSSHOP.COM", "MANAGER@KEYSSHOP.COM", "AQAAAAEAACcQAAAAEJWOTA+y8euJi3y9SYNDw4WopC6TKd3fgEuinsB9FwVgE2xNwk4aJ2Yd7uHrkCBtxA==", null, false, "8e1ec647-3716-4426-ba6f-859ca402f6de", false, "manager@keysshop.com" },
-                    { "72dcbfc5-828a-4c20-b228-1597ad9e9d00", 0, "c7c7bfaf-6030-4928-9b0a-734a0f93b108", "consultant@keysshop.com", true, null, null, false, null, "CONSULTANT@KEYSSHOP.COM", "CONSULTANT@KEYSSHOP.COM", "AQAAAAEAACcQAAAAENrBihSt801ii0OLl+m6SVy+pcjOieK/lLZG9VVzR9zRIjxWBp6txBftcJQ+GBMMAw==", null, false, "4d6e1cab-85f7-4336-a08e-f5b2e5a6e29d", false, "consultant@keysshop.com" },
-                    { "be65a422-9838-4602-ab5c-2b6a0d482385", 0, "5ed705cb-aab9-4587-af03-f2c4d25537bb", "admin@keysshop.com", true, null, null, false, null, "ADMIN@KEYSSHOP.COM", "ADMIN@KEYSSHOP.COM", "AQAAAAEAACcQAAAAELYk+NNt10UtyiXqIwvPWhGbNbXoIeVRGGiVbg1GygqEeSWrOtOmyp6kD+IMT8zKPQ==", null, false, "423cc505-9fa4-4d4b-9a4e-b05a97e060fe", false, "admin@keysshop.com" }
+                    { "1283fa48-21c0-4876-ade1-631783dde9bc", 0, "394dc966-c0ec-48e4-b7b2-23e3300bb4be", "customer@keysshop.com", true, null, null, false, null, "CUSTOMER@KEYSSHOP.COM", "CUSTOMER@KEYSSHOP.COM", "AQAAAAEAACcQAAAAEK3W1gPZ69sCeUfq92/CSzebGfxSCchsjJItQw6cfVcZO9JRUXYVXYqb/kLGP4AJlQ==", null, false, "90000b58-0e91-46cf-861c-fe4e0cf74e22", false, "customer@keysshop.com" },
+                    { "2242398a-c62a-4fb6-a66a-a64b86569876", 0, "44ee5536-cbb6-4615-812d-a5991f31c18c", "manager@keysshop.com", true, null, null, false, null, "MANAGER@KEYSSHOP.COM", "MANAGER@KEYSSHOP.COM", "AQAAAAEAACcQAAAAEJtQRy4cMQVfDsPMyxCNZ5bfUmCswurJgXsaCA0IzYPGbYTE2i5PudaTOFwbwWt6ig==", null, false, "f6db27e5-b4eb-4217-84d9-25a4d539255f", false, "manager@keysshop.com" },
+                    { "5b05eda6-eab9-436c-afb7-af78fbd14b9e", 0, "d15a9ed3-953b-4b83-893a-3e14e9a3b8ed", "consultant@keysshop.com", true, null, null, false, null, "CONSULTANT@KEYSSHOP.COM", "CONSULTANT@KEYSSHOP.COM", "AQAAAAEAACcQAAAAEGFH50TWDec1LqQWqipA+Nf6HD83jCNVps2I5CvLvK+GZDFY3GLdWXM5M9Rscrc/6Q==", null, false, "b411ac41-3c90-4fc3-85c3-3436d9514cf2", false, "consultant@keysshop.com" },
+                    { "e137cad6-156a-4160-b2e7-f7bd5ec5a779", 0, "47cc12d5-f77b-447a-977d-764803f9650b", "admin@keysshop.com", true, null, null, false, null, "ADMIN@KEYSSHOP.COM", "ADMIN@KEYSSHOP.COM", "AQAAAAEAACcQAAAAEAOAuwjGudATRQNMUWPnBjm+8ye9Z9flJeah1bAm2+qL8IYOOJQidZa63VKAXVAVUQ==", null, false, "81c93193-2a61-45a7-a4f2-94196c66d54a", false, "admin@keysshop.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -295,15 +294,15 @@ namespace KeysShop.Core.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "e78efcfa-b117-4e6d-8b2b-9ec09dc24788", "277ec0d9-95d0-4226-8461-4b8001a84f9b" },
-                    { "30402003-0f5b-49a0-b7ac-13bb66400ef9", "64a183d9-c9ae-440c-b726-0d93a8385731" },
-                    { "e78efcfa-b117-4e6d-8b2b-9ec09dc24788", "64a183d9-c9ae-440c-b726-0d93a8385731" },
-                    { "c9934176-4d04-4120-a066-c24eed230908", "72dcbfc5-828a-4c20-b228-1597ad9e9d00" },
-                    { "e78efcfa-b117-4e6d-8b2b-9ec09dc24788", "72dcbfc5-828a-4c20-b228-1597ad9e9d00" },
-                    { "30402003-0f5b-49a0-b7ac-13bb66400ef9", "be65a422-9838-4602-ab5c-2b6a0d482385" },
-                    { "c9934176-4d04-4120-a066-c24eed230908", "be65a422-9838-4602-ab5c-2b6a0d482385" },
-                    { "d191d0bf-e97a-4553-b9da-02e05cb5588d", "be65a422-9838-4602-ab5c-2b6a0d482385" },
-                    { "e78efcfa-b117-4e6d-8b2b-9ec09dc24788", "be65a422-9838-4602-ab5c-2b6a0d482385" }
+                    { "1338f983-31ab-4099-b7d8-87c416740af8", "1283fa48-21c0-4876-ade1-631783dde9bc" },
+                    { "1338f983-31ab-4099-b7d8-87c416740af8", "2242398a-c62a-4fb6-a66a-a64b86569876" },
+                    { "8dc6830c-bb38-44d0-ab4a-3965417bfd7b", "2242398a-c62a-4fb6-a66a-a64b86569876" },
+                    { "1338f983-31ab-4099-b7d8-87c416740af8", "5b05eda6-eab9-436c-afb7-af78fbd14b9e" },
+                    { "d30bb507-e6c9-41bd-bdfe-2a4490721dd2", "5b05eda6-eab9-436c-afb7-af78fbd14b9e" },
+                    { "1338f983-31ab-4099-b7d8-87c416740af8", "e137cad6-156a-4160-b2e7-f7bd5ec5a779" },
+                    { "5c3222ad-8240-4940-acb7-b2a74433e15b", "e137cad6-156a-4160-b2e7-f7bd5ec5a779" },
+                    { "8dc6830c-bb38-44d0-ab4a-3965417bfd7b", "e137cad6-156a-4160-b2e7-f7bd5ec5a779" },
+                    { "d30bb507-e6c9-41bd-bdfe-2a4490721dd2", "e137cad6-156a-4160-b2e7-f7bd5ec5a779" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -346,21 +345,6 @@ namespace KeysShop.Core.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BucketItem_BucketId",
-                table: "BucketItem",
-                column: "BucketId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BucketItem_KeyId",
-                table: "BucketItem",
-                column: "KeyId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BucketItem_UserId",
-                table: "BucketItem",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_KeyId",
                 table: "Feedbacks",
                 column: "KeyId");
@@ -374,6 +358,16 @@ namespace KeysShop.Core.Migrations
                 name: "IX_Keys_BrandId",
                 table: "Keys",
                 column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderDetails_KeyId",
+                table: "OrderDetails",
+                column: "KeyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderDetails_OrderId",
+                table: "OrderDetails",
+                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -394,22 +388,22 @@ namespace KeysShop.Core.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BucketItem");
-
-            migrationBuilder.DropTable(
                 name: "Feedbacks");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "Buckets");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Keys");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Brands");

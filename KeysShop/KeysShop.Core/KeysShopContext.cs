@@ -18,5 +18,7 @@ namespace KeysShop.Core
         public DbSet<Key> Keys { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }
