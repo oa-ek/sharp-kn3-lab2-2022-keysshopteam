@@ -1,15 +1,14 @@
-﻿Юра, [10.11.2022 18:46]
-@using KeysShop.Core
+﻿@using KeysShop.Core
 @model KeysShop.Repository.Dto.KeyCreateDto
 @{
-    var brands = ViewBag.Brands as IEnumerable<Brand>;
+        var brands = ViewBag.Brands as IEnumerable<Brand>;
     Layout = "~/Views/Shared/_BreezeLayout.cshtml";
 
 }
 <div class="content-wrapper pb-0 text-center">
 <h4>Key</h4>
 <hr />
-    @*<div class="content-wrapper pb-0 text-center">
+@*<div class="content-wrapper pb-0 text-center">
 <h4>Key</h4>
 <hr />
 <div class="row">
@@ -80,7 +79,6 @@
     </div>
 </div>
 
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
@@ -93,7 +91,7 @@
                 <h4 class="card-title">Horizontal Two column</h4>
                 <div class="form-sample">
                     <p class="card-description">Personal info</p>
-
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
@@ -123,10 +121,10 @@
                                 <label class="col-sm-3 col-form-label" asp-for="Brand"></label>
                                 <div class="col-sm-9">
                                     <select class="form-select" size="3" id="brands" name="brands">
-                                            @foreach (var b in brands)
-                                            {
-                                                <option value="@b.Name">@b.Name</option>
-                                            }
+                                        @foreach (var b in brands)
+                                        {
+                                            <option value="@b.Name">@b.Name</option>
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -151,7 +149,7 @@
                                 <div class="form-group">
                                     <label class="control-label" </label>
 
-</div>
+                                </div>
                                 <label class="col-sm-3 col-form-label" asp-for="Sale"></label>
                                 <div class="col-sm-9">
                                     <input asp-for="Sale" class="form-control" />
@@ -170,31 +168,23 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" asp-for="Count"></label>
-                                <div class="col-sm-9">
-                                    <input asp-for="Count" class="form-control" />
-                                    <span asp-validation-for="Count" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
                         <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group row">
-                                <div class="form-group">   
-                                <div class="col-sm-9">
-                                    <label class="col-sm-3 col-form-label" asp-for="ImgPath"></label>
-                                    <input  class="form-control" name="picture" id="picture" type="file" />
-                                    <span asp-validation-for="ImgPath" class="text-danger"></span>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="" col-sm-3 col-form-label" asp-for="ImgPath"></label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="picture" id="picture" type="file" />
+                                        <input class="col-sm-3 col-form-label" asp-for="ImgPath" type="hidden" value="0"></input>
+                                        <span asp-validation-for="ImgPath" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                    </div>
+                            </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
@@ -218,22 +208,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="form-group">
-
-<input class="form-check-input" asp-for="IsKeyless" /> @Html.DisplayNameFor(model => model.IsKeyless)
-                                </div>
-                            </div>
-                        </div>
+                       
                         <div class="form-group">
                             <input type="submit" value="Create" class="btn btn-primary" />
                         </div>
                     </div>
+                   
                 </div>
                 </form>
                 <!--сторого залишити-->
@@ -241,14 +221,14 @@
         </div>
     </div></div>
 @section Scripts {
-            <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-        <script>
-            $(function() {
-                $(".form-select").select2();
-            });
-        </script>
+    <script>
+        $(function() {
+            $(".form-select").select2();
+        });
+    </script>
 }
