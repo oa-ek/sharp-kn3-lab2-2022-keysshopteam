@@ -25,7 +25,6 @@ namespace KeysShop.UI.Controllers
                 List<CartItem> cart = new List<CartItem>();
                 cart.Add(new CartItem { Key = keysRepository.GetKey(id), Quantity = 1 });
                 HttpContext.Session.SetObject("cart", cart);
-                var cart1 = HttpContext.Session.GetObject<List<CartItem>>("cart");
             }
             else
             {

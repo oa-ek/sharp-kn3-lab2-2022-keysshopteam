@@ -125,7 +125,6 @@ namespace KeysShop.Core.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Adress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateTime")
@@ -138,14 +137,12 @@ namespace KeysShop.Core.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -252,65 +249,65 @@ namespace KeysShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e76ffa6a-c840-4f6a-967f-5ac5d6863cc6",
+                            Id = "2242398a-c62a-4fb6-a66a-a64b86569876",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "32c3da5e-9785-4444-9199-9bca461f0102",
+                            ConcurrencyStamp = "44ee5536-cbb6-4615-812d-a5991f31c18c",
                             Email = "manager@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MANAGER@KEYSSHOP.COM",
                             NormalizedUserName = "MANAGER@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK64fMVeVzOxUW9MBvAerWa6qu0ABVUeY4PWqzjXuPV4Qg/OqrUvc57CCd45VwQTpg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJtQRy4cMQVfDsPMyxCNZ5bfUmCswurJgXsaCA0IzYPGbYTE2i5PudaTOFwbwWt6ig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6ea0f341-6a48-48a6-a11a-279ea2271420",
+                            SecurityStamp = "f6db27e5-b4eb-4217-84d9-25a4d539255f",
                             TwoFactorEnabled = false,
                             UserName = "manager@keysshop.com"
                         },
                         new
                         {
-                            Id = "5b351cad-850e-4e81-a626-c133a4c0f506",
+                            Id = "1283fa48-21c0-4876-ade1-631783dde9bc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a39f8d96-434b-449b-96b3-24290ac6ffd3",
+                            ConcurrencyStamp = "394dc966-c0ec-48e4-b7b2-23e3300bb4be",
                             Email = "customer@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "CUSTOMER@KEYSSHOP.COM",
                             NormalizedUserName = "CUSTOMER@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPaIG2DM4u6HcEa68NW6+aavdR8id8OjxOUBVOj/ufuIuae1H22ta9UbBGrl0OF2TA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK3W1gPZ69sCeUfq92/CSzebGfxSCchsjJItQw6cfVcZO9JRUXYVXYqb/kLGP4AJlQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fa1db1fe-be11-4ac0-b023-0e7e91d26cde",
+                            SecurityStamp = "90000b58-0e91-46cf-861c-fe4e0cf74e22",
                             TwoFactorEnabled = false,
                             UserName = "customer@keysshop.com"
                         },
                         new
                         {
-                            Id = "717f9912-b416-497f-8dc3-efaba25bc9b9",
+                            Id = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "356b6d4b-d2a0-470d-a1bb-b1f2991b5db5",
+                            ConcurrencyStamp = "47cc12d5-f77b-447a-977d-764803f9650b",
                             Email = "admin@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@KEYSSHOP.COM",
                             NormalizedUserName = "ADMIN@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMeiUVwGAR4z3eMwAyeUNOvMBBWMffEWpsSN9vHKCFUBNv87gYQOEvlAirydYKa4cQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAOAuwjGudATRQNMUWPnBjm+8ye9Z9flJeah1bAm2+qL8IYOOJQidZa63VKAXVAVUQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "63150481-7548-4641-8f8f-69b3ca78ae6d",
+                            SecurityStamp = "81c93193-2a61-45a7-a4f2-94196c66d54a",
                             TwoFactorEnabled = false,
                             UserName = "admin@keysshop.com"
                         },
                         new
                         {
-                            Id = "655ebfd1-c551-4fe8-bef6-85fd11211f1a",
+                            Id = "5b05eda6-eab9-436c-afb7-af78fbd14b9e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f158b885-3f93-411d-ad8d-d084bff672b1",
+                            ConcurrencyStamp = "d15a9ed3-953b-4b83-893a-3e14e9a3b8ed",
                             Email = "consultant@keysshop.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "CONSULTANT@KEYSSHOP.COM",
                             NormalizedUserName = "CONSULTANT@KEYSSHOP.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKONHJ4VD+emVQBjWVP/7s8Ge5SdgiF96AEHXTIZZrURG0iHythnonpF0jmR5Y80wQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGFH50TWDec1LqQWqipA+Nf6HD83jCNVps2I5CvLvK+GZDFY3GLdWXM5M9Rscrc/6Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d3427035-d130-4e26-8b22-68648a528827",
+                            SecurityStamp = "b411ac41-3c90-4fc3-85c3-3436d9514cf2",
                             TwoFactorEnabled = false,
                             UserName = "consultant@keysshop.com"
                         });
@@ -345,29 +342,29 @@ namespace KeysShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "475da668-744e-4852-8f25-9cd3c1d4b57f",
-                            ConcurrencyStamp = "30b94e01-5d27-4df7-b0c1-70c483f719ef",
+                            Id = "5c3222ad-8240-4940-acb7-b2a74433e15b",
+                            ConcurrencyStamp = "0523fe3e-111b-4405-b116-e186e09fd5e5",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "bd1c9323-eb23-4005-9df3-9183dbf7c864",
-                            ConcurrencyStamp = "a475b666-0c5b-45b7-a053-a97dfe42bdf1",
+                            Id = "8dc6830c-bb38-44d0-ab4a-3965417bfd7b",
+                            ConcurrencyStamp = "e091d7b8-cf4e-48c7-a5a7-eb850dff88b5",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "f9ea0100-7760-4b7c-882a-7eac48efaf8c",
-                            ConcurrencyStamp = "b812e2dd-05cf-4685-aed8-87d61f6686e8",
+                            Id = "d30bb507-e6c9-41bd-bdfe-2a4490721dd2",
+                            ConcurrencyStamp = "9e6cefc9-f083-40cf-ae78-96fa663c4946",
                             Name = "Consultant",
                             NormalizedName = "CONSULTANT"
                         },
                         new
                         {
-                            Id = "ddf5c42a-4b4e-4a8d-954a-280536ff9cbc",
-                            ConcurrencyStamp = "fce90928-b96f-4f52-b656-637c20bbd295",
+                            Id = "1338f983-31ab-4099-b7d8-87c416740af8",
+                            ConcurrencyStamp = "d3d74760-bb15-446b-989d-d29433a84684",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -464,48 +461,48 @@ namespace KeysShop.Core.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "717f9912-b416-497f-8dc3-efaba25bc9b9",
-                            RoleId = "475da668-744e-4852-8f25-9cd3c1d4b57f"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "5c3222ad-8240-4940-acb7-b2a74433e15b"
                         },
                         new
                         {
-                            UserId = "717f9912-b416-497f-8dc3-efaba25bc9b9",
-                            RoleId = "bd1c9323-eb23-4005-9df3-9183dbf7c864"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "8dc6830c-bb38-44d0-ab4a-3965417bfd7b"
                         },
                         new
                         {
-                            UserId = "717f9912-b416-497f-8dc3-efaba25bc9b9",
-                            RoleId = "ddf5c42a-4b4e-4a8d-954a-280536ff9cbc"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "717f9912-b416-497f-8dc3-efaba25bc9b9",
-                            RoleId = "f9ea0100-7760-4b7c-882a-7eac48efaf8c"
+                            UserId = "e137cad6-156a-4160-b2e7-f7bd5ec5a779",
+                            RoleId = "d30bb507-e6c9-41bd-bdfe-2a4490721dd2"
                         },
                         new
                         {
-                            UserId = "e76ffa6a-c840-4f6a-967f-5ac5d6863cc6",
-                            RoleId = "bd1c9323-eb23-4005-9df3-9183dbf7c864"
+                            UserId = "2242398a-c62a-4fb6-a66a-a64b86569876",
+                            RoleId = "8dc6830c-bb38-44d0-ab4a-3965417bfd7b"
                         },
                         new
                         {
-                            UserId = "e76ffa6a-c840-4f6a-967f-5ac5d6863cc6",
-                            RoleId = "ddf5c42a-4b4e-4a8d-954a-280536ff9cbc"
+                            UserId = "2242398a-c62a-4fb6-a66a-a64b86569876",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "5b351cad-850e-4e81-a626-c133a4c0f506",
-                            RoleId = "ddf5c42a-4b4e-4a8d-954a-280536ff9cbc"
+                            UserId = "1283fa48-21c0-4876-ade1-631783dde9bc",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "655ebfd1-c551-4fe8-bef6-85fd11211f1a",
-                            RoleId = "ddf5c42a-4b4e-4a8d-954a-280536ff9cbc"
+                            UserId = "5b05eda6-eab9-436c-afb7-af78fbd14b9e",
+                            RoleId = "1338f983-31ab-4099-b7d8-87c416740af8"
                         },
                         new
                         {
-                            UserId = "655ebfd1-c551-4fe8-bef6-85fd11211f1a",
-                            RoleId = "f9ea0100-7760-4b7c-882a-7eac48efaf8c"
+                            UserId = "5b05eda6-eab9-436c-afb7-af78fbd14b9e",
+                            RoleId = "d30bb507-e6c9-41bd-bdfe-2a4490721dd2"
                         });
                 });
 
