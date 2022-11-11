@@ -93,144 +93,145 @@
 
     <div class="col-12 grid-margin">
         <div class="card">
-            <form asp-action="Create" enctype="application/x-www-form-urlencoded">
+            <form asp-action="Edit" enctype="application/x-www-form-urlencoded">
                 @Html.AntiForgeryToken()
             <div class="card-body">
                 <h4 class="card-title">Horizontal Two column</h4>
                 <div class="form-sample">
                     <p class="card-description">Personal info</p>
+
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group row">                             
-                                <label class="col-sm-3 col-form-label" for="Name">Name</label>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="Name"></label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" value="BMW">
-                                    <span class="text-danger field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">                              
-                                <label class="col-sm-3 col-form-label" for="Description">Description</label>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="Description"></label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" id="Description" name="Description" value="new key">
-                                    <span class="text-danger field-validation-valid" data-valmsg-for="Description" data-valmsg-replace="true"></span>
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group row">
-                                    <div class="mb-3">
-                                        <label class="form-label" </label>
-                                    </div>
-                                    <label class="col-sm-3 col-form-label" asp-for="Brand"></label>
-                                    <div class="col-sm-9">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="mb-3">
+                                    <label class="form-label" </label>
+                                </div>
+                                <label class="col-sm-3 col-form-label" asp-for="Brand"></label>
+                                <div class="col-sm-9">
                                         <select class="form-select" size="3" id="brands" name="brands">
                                             @foreach (var b in brands)
                                             {
                                                 var selected = @Model.Brand == b.Name ? true : false;
-                                                <!option value="@b.Name" @(selected ? "selected" : "")>@b.Name</!option>
+                                                        <!option value="@b.Name" @(selected ? "selected" : "")>@b.Name</!option>
                                             }
                                         </select>
-                                    </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <div class="form-group">
                                     <label class="control-label" </label>
-                                   
+
                                 </div>
-                                <label class="col-sm-3 col-form-label" for="Price">Price</label>
+                                <label class="col-sm-3 col-form-label" asp-for="Price"></label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" type="text" data-val="true" data-val-number="The field Price must be a number." id="Price" name="Price" value="250">
-                                    <span class="text-danger field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+                                    <input asp-for="Price" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <div class="form-group">
-                                            <label class="control-label" </label>
-
-                                        </div>
-                                        <label class="col-sm-3 col-form-label" asp-for="Sale"></label>
-                                        <div class="col-sm-9">
-                                            <input asp-for="Sale" class="form-control" />
-                                            <span asp-validation-for="Sale" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label" asp-for="Frequency"></label>
-                                        <div class="col-sm-4">
-                                            <input asp-for="Frequency" class="form-control" />
-                                            <span asp-validation-for="Frequency" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <div class="form-group">
-                                            <label class="control-label" </label>
-
-                                        </div>
-                                        <label class="" col-sm-3 col-form-label" asp-for="ImgPath"></label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" name="picture" id="picture" type="file" />
-                                            <input class="col-sm-3 col-form-label" asp-for="ImgPath" type="hidden" value="0"></input>
-                                            <span asp-validation-for="ImgPath" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <div class="form-group form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" asp-for="IsOriginal" /> @Html.DisplayNameFor(model => model.IsOriginal)
-                                                <i class="input-helper"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <div class="form-group form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" asp-for="IsKeyless" /> @Html.DisplayNameFor(model => model.IsKeyless)
-                                                <i class="input-helper"></i>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                                               
+                                <div class="form-group">
+                                    <label class="control-label" </label>
+                                </div>
+                                <label class="col-sm-3 col-form-label" asp-for="Sale"></label>
+                                <div class="col-sm-9">
+                                    <input asp-for="Sale" class="form-control" />
+                <span asp-validation-for="Sale" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Frequency"></label>
+                                    <div class="col-sm-4">
+                                        <input asp-for="Frequency" class="form-control" />
+                                        <span asp-validation-for="Frequency" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="" col-sm-3 col-form-label" asp-for="ImgPath"></label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="picture" id="picture" asp-for="ImgPath" type="file" />
+                                        <input class="col-sm-3 col-form-label"  type="hidden" value="0"></input>
+                                        <span asp-validation-for="ImgPath" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="Name"></label>
+                                <div class="col-sm-9">
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+<div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsOriginal" /> @Html.DisplayNameFor(model => model.IsOriginal)
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <div class="form-group">
-                                    <input type="submit" value="Save" class="btn btn-primary">
-                                </div>                             
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="IsKeyless" /> @Html.DisplayNameFor(model => model.IsKeyless)
+                                        <i class="input-helper"></i>
+                                    </label>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+
+                        <div class="form-group">
+                            <input type="submit" value="Зберегти" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                </div>
                     </form>
                     <!--сторого залишити-->
                 </div>

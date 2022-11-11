@@ -1,5 +1,4 @@
-﻿Юра, [10.11.2022 18:46]
-@using KeysShop.Core
+﻿@using KeysShop.Core
 @model KeysShop.Repository.Dto.KeyCreateDto
 @{
     var brands = ViewBag.Brands as IEnumerable<Brand>;
@@ -7,84 +6,9 @@
 
 }
 <div class="content-wrapper pb-0 text-center">
-<h4>Key</h4>
+<h4>Додавання ключа</h4>
 <hr />
-    @*<div class="content-wrapper pb-0 text-center">
-<h4>Key</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            @Html.AntiForgeryToken()
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                    <label asp-for="Brand" class="form-label"></label>
-                <select class="form-select" size="3" id="brands" name="brands">
-                    @foreach (var b in brands)
-                    {
-                            <option value="@b.Name">@b.Name</option>
-                    }
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sale" class="control-label"></label>
-                <input asp-for="Sale" class="form-control" />
-                <span asp-validation-for="Sale" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Frequency" class="control-label"></label>
-                <input asp-for="Frequency" class="form-control" />
-                <span asp-validation-for="Frequency" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Count" class="control-label"></label>
-                <input asp-for="Count" class="form-control" />
-                <span asp-validation-for="Count" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImgPath" class="control-label"></label>
-                <input asp-for="ImgPath" class="form-control" />
-                <span asp-validation-for="ImgPath" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsOriginal" /> @Html.DisplayNameFor(model => model.IsOriginal)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsKeyless" /> @Html.DisplayNameFor(model => model.IsKeyless)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-*@
+   
     <div class="col-12 grid-margin">
         <div class="card">
             <form asp-action="Create" enctype="multipart/form-data">
@@ -150,7 +74,6 @@
                             <div class="form-group row">
                                 <div class="form-group">
                                     <label class="control-label" </label>
-
 </div>
                                 <label class="col-sm-3 col-form-label" asp-for="Sale"></label>
                                 <div class="col-sm-9">
@@ -159,43 +82,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" asp-for="Frequency"></label>
-                                <div class="col-sm-4">
-                                    <input asp-for="Frequency" class="form-control" />
-                <span asp-validation-for="Frequency" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label" asp-for="Count"></label>
-                                <div class="col-sm-9">
-                                    <input asp-for="Count" class="form-control" />
-                                    <span asp-validation-for="Count" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group row">
-                                <div class="form-group">   
-                                <div class="col-sm-9">
-                                    <label class="col-sm-3 col-form-label" asp-for="ImgPath"></label>
-                                    <input  class="form-control" name="picture" id="picture" type="file" />
-                                    <span asp-validation-for="ImgPath" class="text-danger"></span>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" asp-for="Frequency"></label>
+                                    <div class="col-sm-4">
+                                        <input asp-for="Frequency" class="form-control" />
+                                        <span asp-validation-for="Frequency" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <div class="form-group">
+                                        <label class="control-label" </label>
+
+                                    </div>
+                                    <label class="" col-sm-3 col-form-label" asp-for="ImgPath"></label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="picture" id="picture" type="file" />
+                                        <input class="col-sm-3 col-form-label" asp-for="ImgPath" type="hidden" value="0"></input>
+                                        <span asp-validation-for="ImgPath" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
+<div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <div class="form-group form-check">
@@ -218,22 +132,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <div class="form-group">
 
-<input class="form-check-input" asp-for="IsKeyless" /> @Html.DisplayNameFor(model => model.IsKeyless)
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <input type="submit" value="Create" class="btn btn-primary" />
                         </div>
                     </div>
+
                 </div>
                 </form>
                 <!--сторого залишити-->

@@ -96,6 +96,12 @@ namespace KeysShop.UI.Controllers
         {
             if (ModelState.IsValid)
             {
+                string picturePath = Path.Combine(_webHostEnvironment.WebRootPath, "img", "keys", picture.FileName);
+
+                using (FileStream stream = new FileStream(picturePath, FileMode.Create))
+                    picture.CopyTo(stream);
+
+                model.ImgPath = Path.Combine("img", "keys", picture.FileName);
                 await keysRepository.UpdateAsync(model, brands);
                 return RedirectToAction("Index");
             }
