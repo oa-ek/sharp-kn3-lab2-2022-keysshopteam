@@ -8,7 +8,7 @@
 @using KeysShop.Core;
 @inject IHttpContextAccessor Accessor
 
-    <br>
+
 
 
 <section class="vh-100" style="background-color: #fdccbc;">
@@ -52,6 +52,9 @@
                                             <p class="small text-muted mb-4 pb-2">Quantity</p>
                                             <p class="lead fw-normal mb-0"><td>@item.Quantity</td></p>
                                         </div>
+                                    </div>
+                                    <div class="col-md-2 d-flex justify-content-center">
+                                    <a class="btn btn-primary" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Key.Id">Видалити</a>
                                     </div>
 
     <div class="col-md-2 d-flex justify-content-center">

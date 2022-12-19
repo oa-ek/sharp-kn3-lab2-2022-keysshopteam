@@ -110,6 +110,13 @@ namespace KeysShop.UI.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            return View(await keysRepository.GetKeyDto(id));
+        }
+
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             return View(await keysRepository.GetKeyDto(id));

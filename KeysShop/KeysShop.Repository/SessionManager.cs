@@ -24,7 +24,6 @@ namespace KeysShop.Repository
         public void SetCartId(string id, string cartSessionKey)
         {
             _session.SetString(cartSessionKey, id);
-  
         }
 
         public string GetCartId(string cartSessionKey)

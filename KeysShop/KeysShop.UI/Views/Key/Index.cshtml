@@ -6,17 +6,21 @@
 }
 <div class="content-wrapper pb-0 text-center">
 <h1>@ViewData["Title"]</h1>
-<div class="">
-    <a class="btn btn-success" asp-action="Create">Додати товар</a>
-</div>
+    @if (@User.IsInRole("Admin"))
+    {
+    <div class="">
+        <a class="btn btn-success" asp-action="Create">Додати товар</a>
+    </div>
+    }
+
 
 <br />
 
-    <tbody>
+    <tbody >
         <div class="container row">
             @foreach (var item in Model)
             {
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 mb-4" >
                         <div class="card card-block">
 
                         @*<img class="card-img-top img-thumbnail" style="height: 180px; width: 100%; display: block; src="/img/keys/@item.ImgPath" alt="@item.Name">*@
@@ -26,9 +30,11 @@
                                      <p class="card-text">Бренд: @item.Brand.Name</p>
 
                                 <a class="btn btn-primary" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Id">В корзину</a>
-                                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Редагувати</a>
+                                    @if (@User.IsInRole("Admin")){
+                                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Редагувати</a>
+                                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+                                    }
                                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Деталі</a>
-                                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
                                   </div>
                                 </div>
                                 </div>

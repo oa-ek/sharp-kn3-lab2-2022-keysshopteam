@@ -3,8 +3,7 @@ using KeysShop.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-using KeysShop.Core;
-using KeysShop.Repository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
