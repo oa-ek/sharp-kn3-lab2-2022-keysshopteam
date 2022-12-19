@@ -11,7 +11,7 @@
 
 
 
-<section class="vh-100" style="background-color: #fdccbc;">
+<section class="vh-100" style="background-color: #74a6d0;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
@@ -51,8 +51,21 @@
                                     <div class="col-md-2 d-flex justify-content-center">
                                         <div>
                                             <p class="small text-muted mb-4 pb-2">Quantity</p>
-                                            <p class="lead fw-normal mb-0"><td>@item.Quantity</td></p>
+                                            @*<p class="lead fw-normal mb-0"><td>@item.Quantity</td></p>*@
+                                        <div class="d-flex mb-4" style="max-width: 300px">
+                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <i class="fas fa-minus">-</i>
+                                            </button>
+
+                                            <input id="form1" min="1" name="quantity" value="@item.Quantity" type="number" class="form-control form-control-sm">
+
+                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="fas fa-plus">+</i>
+                                            </button>
                                         </div>
+                                    </div>
+                                
+                                        
                                     </div>
                                     <div class="col-md-2 d-flex justify-content-center">
                                     <a class="btn btn-primary" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Key.Id">Видалити</a>
