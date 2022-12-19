@@ -19,6 +19,7 @@
 
                 <div class="card mb-4">
                     <div class="card-body p-4">
+                        @if(@Accessor.HttpContext.Session.GetObject<List<CartItem>>("cart")!=null)
                         @foreach (CartItem item in Accessor.HttpContext.Session.GetObject<List<CartItem>>("cart"))
                         {
 
@@ -70,6 +71,7 @@
                         </div>                
                 <div class="card mb-5">
                     <div class="card-body p-4">
+                        @if (@Accessor.HttpContext.Session.GetObject<List<CartItem>>("cart") != null)
                         @foreach (CartItem item in Accessor.HttpContext.Session.GetObject<List<CartItem>>("cart"))
                         {
                                     <span type="hidden" style="font-size: 0; position:absolute">@(@totalsum

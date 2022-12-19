@@ -18,6 +18,32 @@ namespace KeysShop.UI.Controllers
             return View();
         }
 
+        public void Buy(int id)
+        {
+            if (HttpContext.Session.GetObject<List<CartItem>>("cart") == null)
+            {
+                List<CartItem> cart = new List<CartItem>();
+                cart.Add(new CartItem { Key = keysRepository.GetKey(id), Quantity = 1 });
+                HttpContext.Session.SetObject("cart", cart);
+            }
+            else
+            {
+                var cart = HttpContext.Session.GetObject<List<CartItem>>("cart");
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    cart[index].Quantity++;
+                }
+                else
+                {
+                    cart.Add(new CartItem { Key = keysRepository.GetKey(id), Quantity = 1 });
+                }
+                HttpContext.Session.SetObject("cart", cart);
+                
+            }
+            var cart1 = HttpContext.Session.GetObject<List<CartItem>>("cart");
+
+        }/*
         public ActionResult Buy(int id)
         {
             if (HttpContext.Session.GetObject<List<CartItem>>("cart") == null)
@@ -41,6 +67,23 @@ namespace KeysShop.UI.Controllers
                 HttpContext.Session.SetObject("cart", cart);
             }
             return RedirectToAction("Index");
+        }*/
+        public int ReturnCartQuantity()
+        {
+            int quantity = 0;
+            if (HttpContext.Session.GetObject<List<CartItem>>("cart") == null)
+            {
+                return 0;
+            }
+            else
+            {
+                var cart = HttpContext.Session.GetObject<List<CartItem>>("cart");
+                foreach( var item in cart)
+                {
+                    quantity+=item.Quantity;
+                }
+            }
+            return quantity;
         }
 
         public ActionResult Remove(int id)

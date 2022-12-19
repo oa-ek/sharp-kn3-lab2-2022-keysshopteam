@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Key Shop</title>
+
    @(await Html.PartialAsync("_BreezeLayoutHead"))
 </head>
 <body>
@@ -51,6 +52,41 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
+    <script type="text/javascript">
+    /*$(document).ready(function () {
+        $('#addToCart').click(function (e) {
+            e.preventDefault();
+            var name = $('#search').val();
+            name=encodeURIComponent(name);
+            $('#results').load('@Url.Action("BookSearch", "Home")?name='+name)
+            $('#results').send()
+        });
+    });*/
+    $(document).ready(function(){
+    $('#cartquantity').load('@Url.Action("ReturnCartQuantity", "cart")')
+});
+    $(document).ready(function () {
+        $('.addToCart').click(function (e) {
+        var ss = jQuery(this).parent().find("input[type=hidden]").val();
+        console.log(ss);
+            $.ajax({
+                url: '/cart/Buy',
+                type: 'Get',
+                data: {
+                    id: ss
+                }
+            });
+
+
+
+            function sayHi(){
+                $('#cartquantity').load('@Url.Action("ReturnCartQuantity", "cart")')
+            }
+                        setTimeout(sayHi, 700);
+        });
+    });
+    </script>
+
 <!--End of Tawk.to Script-->
 </body>
 
