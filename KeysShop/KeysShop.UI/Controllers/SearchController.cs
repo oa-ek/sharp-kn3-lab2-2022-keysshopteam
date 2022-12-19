@@ -23,7 +23,12 @@ namespace KeysShop.UI.Controllers
                 return RedirectToAction("SearchError");
             }
             var list = keysRepository.GetKeys();
-            list = list.Where(s => s.Name!.ToLower().Contains(keyname.ToLower())).ToList();
+           /* list = list.Where(s => s.Name!.ToLower().Contains(keyname.ToLower())).ToList();*/
+            list = list.
+                Where(x => x.Name.ToLower().Contains(keyname.ToLower())
+                || x.Description.ToLower().Contains(keyname.ToLower())
+                || x.Frequency.ToString().Contains(keyname.ToLower())
+                || x.Brand.Name.ToLower().Contains(keyname.ToLower())).ToList();
 
             ViewBag.Keys = list;
 
