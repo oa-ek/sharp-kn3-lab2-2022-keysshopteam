@@ -95,7 +95,42 @@
                     $('.totalsum').text("Сума замовлення: "+d);
                 }
             });
+                                function sayHi(){
+                $('#cartquantity').load('@Url.Action("ReturnCartQuantity", "cart")')
+            }
+                        setTimeout(sayHi, 700);
         });
+
+    });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $('.decreasekey').click(function (e) {
+        var ss = jQuery(this).parent().find('.hiddenInput').val();
+        var s1 = jQuery(this).parent().find('.quantityInput').val();
+
+
+
+
+
+        
+            console.log(ss);
+                $.ajax({
+                    url: '/cart/DecreaseKey',
+                    type: 'Post',
+                    data: {
+                        id: ss
+                    }, //This is deprecated in the latest version of jquery must use now callbacks
+                    success: function(d){
+                        $('.totalsum').text("Сума замовлення: "+d);
+                    }
+                });
+                    function sayHi(){
+                    $('#cartquantity').load('@Url.Action("ReturnCartQuantity", "cart")')
+                }
+                    setTimeout(sayHi, 700);
+            });
+        
     });
     </script>
 <!--End of Tawk.to Script-->

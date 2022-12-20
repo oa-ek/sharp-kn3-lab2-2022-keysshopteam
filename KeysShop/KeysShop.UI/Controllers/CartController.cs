@@ -58,6 +58,7 @@ namespace KeysShop.UI.Controllers
             return sum;
 
         }
+        [HttpPost]
         public double? DecreaseKey(int id)
         {
             var cart = HttpContext.Session.GetObject<List<CartItem>>("cart");
