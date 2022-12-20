@@ -38,7 +38,7 @@
     <!-- Custom js for this page -->
     <script src="/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
@@ -53,21 +53,13 @@
     })();
     </script>
     <script type="text/javascript">
-    /*$(document).ready(function () {
-        $('#addToCart').click(function (e) {
-            e.preventDefault();
-            var name = $('#search').val();
-            name=encodeURIComponent(name);
-            $('#results').load('@Url.Action("BookSearch", "Home")?name='+name)
-            $('#results').send()
-        });
-    });*/
+
     $(document).ready(function(){
     $('#cartquantity').load('@Url.Action("ReturnCartQuantity", "cart")')
 });
     $(document).ready(function () {
         $('.addToCart').click(function (e) {
-        var ss = jQuery(this).parent().find("input[type=hidden]").val();
+        var ss = jQuery(this).parent().find('.hiddenInput').val();
         console.log(ss);
             $.ajax({
                 url: '/cart/Buy',
@@ -85,8 +77,27 @@
                         setTimeout(sayHi, 700);
         });
     });
-    </script>
 
+
+    </script>
+    <script>
+    $(document).ready(function () {
+        $('.increasekey').click(function (e) {
+        var ss = jQuery(this).parent().find('.hiddenInput').val();
+        console.log(ss);
+            $.ajax({
+                url: '/cart/IncreaseKey',
+                type: 'Post',
+                data: {
+                    id: ss
+                }, //This is deprecated in the latest version of jquery must use now callbacks
+                success: function(d){
+                    $('.totalsum').text("Сума замовлення: "+d);
+                }
+            });
+        });
+    });
+    </script>
 <!--End of Tawk.to Script-->
 </body>
 

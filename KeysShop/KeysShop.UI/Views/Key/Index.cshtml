@@ -28,7 +28,7 @@
                             <div class="card-block">
                                      <h5 class="card-title">@item.Name</h5>
                                      <p class="card-text">Бренд: @item.Brand.Name</p>
-                                         <input type="hidden" value="@item.Id"/>
+                                         <input class="hiddenInput" type="hidden" value="@item.Id"/>
                                          <button class="btn btn-primary addToCart">В корзину</button>
                                          
                                 @*<a class="btn btn-primary addToCart" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Id">В корзину</a>*@

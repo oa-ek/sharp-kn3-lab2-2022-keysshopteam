@@ -23,7 +23,7 @@ namespace KeysShop.UI.Controllers
             if (HttpContext.Session.GetObject<List<CartItem>>("cart") == null)
             {
                 List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem { Key = keysRepository.GetKey(id), Quantity = 1 });
+                cart.Add(new CartItem { Id = cart.Count, Key = keysRepository.GetKey(id), Quantity = 1 });
                 HttpContext.Session.SetObject("cart", cart);
             }
             else
@@ -36,13 +36,39 @@ namespace KeysShop.UI.Controllers
                 }
                 else
                 {
-                    cart.Add(new CartItem { Key = keysRepository.GetKey(id), Quantity = 1 });
+                    cart.Add(new CartItem { Id = cart.Count, Key = keysRepository.GetKey(id), Quantity = 1 });
                 }
                 HttpContext.Session.SetObject("cart", cart);
                 
             }
             var cart1 = HttpContext.Session.GetObject<List<CartItem>>("cart");
 
+        }
+        [HttpPost]
+        public double? IncreaseKey(int id)
+        {
+            var cart = HttpContext.Session.GetObject<List<CartItem>>("cart");
+            cart[id].Quantity += 1;
+            double? sum = 0;
+            foreach (var item in cart)
+                sum+=item.Quantity*item.Key.Price;
+            HttpContext.Session.SetObject("cart", cart);
+
+            var cart1 = HttpContext.Session.GetObject<List<CartItem>>("cart");
+            return sum;
+
+        }
+        public double? DecreaseKey(int id)
+        {
+            var cart = HttpContext.Session.GetObject<List<CartItem>>("cart");
+            cart[id].Quantity -= 1;
+            double? sum = 0;
+            foreach (var item in cart)
+                sum+=item.Quantity*item.Key.Price;
+            HttpContext.Session.SetObject("cart", cart);
+
+
+            return sum;
         }/*
         public ActionResult Buy(int id)
         {

@@ -53,30 +53,29 @@
                                             <p class="small text-muted mb-4 pb-2">Quantity</p>
                                             @*<p class="lead fw-normal mb-0"><td>@item.Quantity</td></p>*@
                                         <div class="d-flex mb-4" style="max-width: 300px">
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                    
+                                            <button class="btn btn-link px-2 decreasekey" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                 <i class="fas fa-minus">-</i>
                                             </button>
 
-                                            <input id="form1" min="1" name="quantity" value="@item.Quantity" type="number" class="form-control form-control-sm">
+                                            <input class="hiddenInput" type="hidden" value="@item.Id"/>
 
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                            <input id="form1" min="1" name="quantity" value="@item.Quantity" type="number" class="form-control form-control-sm">
+                                            
+                                            <button class="btn btn-link px-2 increasekey" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                           
                                                 <i class="fas fa-plus">+</i>
                                             </button>
                                         </div>
                                     </div>
-                                
+ 
                                         
                                     </div>
                                     <div class="col-md-2 d-flex justify-content-center">
                                     <a class="btn btn-primary" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Key.Id">Видалити</a>
                                     </div>
 
-    <div class="col-md-2 d-flex justify-content-center">
-                                    <div>
-                                        <p class="small text-muted mb-4 pb-2">Total</p>
-                                            <p class="lead fw-normal mb-0"> <td>@(item.Key.Price * item.Quantity)</td></p>
-                                    </div>
-                                </div>
+
                             </div>      
                         }
 
@@ -92,7 +91,7 @@
                         }
                         <div class="float-end">
                             <p class="mb-0 me-5 d-flex align-items-center">
-                                 <span class="lead fw-normal"><td>Сума замовлення: @totalsum</td></span>
+                                 <span class="lead fw-normal totalsum"><td>Сума замовлення: @totalsum</td></span>
                             </p>
                         </div>
                     </div>
